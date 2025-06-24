@@ -28,8 +28,8 @@ export default function Header() {
       <div className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
           {/* Logo with enhanced styling */}
-          <a 
-            href="/" 
+          <a
+            href="/"
             className="flex items-center space-x-2 group transition-transform duration-200 hover:scale-105"
           >
             <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
@@ -46,11 +46,10 @@ export default function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 ${
-                  isActive(link.href)
+                className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 ${isActive(link.href)
                     ? "text-white bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg shadow-blue-500/25"
                     : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800/50"
-                }`}
+                  }`}
               >
                 {link.label}
                 {isActive(link.href) && (
@@ -88,11 +87,10 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`block px-4 py-3 text-base font-medium rounded-xl transition-all duration-200 ${
-                    isActive(link.href)
+                  className={`block px-4 py-3 text-base font-medium rounded-xl transition-all duration-200 ${isActive(link.href)
                       ? "text-white bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg shadow-blue-500/25"
                       : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800/50"
-                  }`}
+                    }`}
                 >
                   {link.label}
                 </a>

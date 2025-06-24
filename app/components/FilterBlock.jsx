@@ -1,18 +1,18 @@
-"use client"
+'use client';
 
 import { useState } from 'react';
 import { Input } from './ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from './ui/select';
 import { Slider } from './ui/slider';
 import { Button } from './ui/button';
+import { SlidersHorizontal } from 'lucide-react';
 
-/**
- * Filter Block component
- * @param {Object} props - Component props
- * @param {Object} props.filters - Current filter values
- * @param {Function} props.setFilters - Function to update filters
- * @returns {JSX.Element} Filter block
- */
 export default function FilterBlock({ filters, setFilters }) {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -27,58 +27,95 @@ export default function FilterBlock({ filters, setFilters }) {
     };
 
     return (
-        <div className="mb-6">
-            <Button
-                variant="outline"
-                className="md:hidden mb-2"
-                onClick={() => setIsOpen(!isOpen)}
-            >
-                {isOpen ? 'Hide Filters' : 'Show Filters'}
-            </Button>
-            <div className={`${isOpen ? 'block' : 'hidden'} md:block space-y-4`}>
-                <div>
-                    <label htmlFor="category" className="block text-sm font-medium">Category</label>
-                    <Select
-                        value={filters.category}
-                        onValueChange={(value) => setFilters({ ...filters, category: value })}
-                    >
-                        <SelectTrigger>
-                            <SelectValue placeholder="Select category" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value={"selected"}>All</SelectItem>
-                            {categories.map((cat) => (
-                                <SelectItem key={cat} value={cat}>{cat}</SelectItem>
-                            ))}
-                        </SelectContent>
-                    </Select>
-                </div>
-                <div>
-                    <label htmlFor="location" className="block text-sm font-medium">Location</label>
-                    <Input
-                        id="location"
-                        value={filters.location}
-                        onChange={(e) => setFilters({ ...filters, location: e.target.value })}
-                        placeholder="Enter city"
-                    />
-                </div>
-                <div>
-                    <label className="block text-sm font-medium">Price Range</label>
-                    <Slider
-                        value={filters.priceRange}
-                        onValueChange={(value) => setFilters({ ...filters, priceRange: value })}
-                        min={0}
-                        max={5000}
-                        step={100}
-                        className="mt-2"
-                    />
-                    <p className="text-sm mt-1">
-                        ${filters.priceRange[0]} - ${filters.priceRange[1]}
-                    </p>
-                </div>
-                <Button variant="outline" onClick={resetFilters}>
-                    Reset Filters
+        <div className="w-full">
+            {/* Toggle button for mobile */}
+            <div className="md:hidden mb-4 flex justify-end">
+                <Button
+                    variant="outline"
+                    onClick={() => setIsOpen(!isOpen)}
+                    className="flex items-center gap-2"
+                >
+                    <SlidersHorizontal className="w-4 h-4" />
+                    {isOpen ? 'Hide Filters' : 'Show Filters'}
                 </Button>
+            </div>
+
+            {/* Filters section */}
+            <div
+                className={`transition-all duration-300 ${isOpen ? 'block' : 'hidden'
+                    } md:block`}
+            >
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700">
+                    {/* Category */}
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                            Category
+                        </label>
+                        <Select
+                            value={filters.category}
+                            onValueChange={(value) =>
+                                setFilters({ ...filters, category: value })
+                            }
+                        >
+                            <SelectTrigger className="w-full">
+                                <SelectValue placeholder="Select category" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                {categories.map((cat) => (
+                                    <SelectItem key={cat} value={cat}>
+                                        {cat}
+                                    </SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
+                    </div>
+
+                    {/* Location */}
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                            Location
+                        </label>
+                        <Input
+                            value={filters.location}
+                            onChange={(e) =>
+                                setFilters({ ...filters, location: e.target.value })
+                            }
+                            placeholder="Enter city"
+                        />
+                    </div>
+
+                    {/* Price Range */}
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                            Price Range
+                        </label>
+                        <div className="px-1">
+                            <Slider
+                                value={filters.priceRange}
+                                onValueChange={(value) =>
+                                    setFilters({ ...filters, priceRange: value })
+                                }
+                                min={0}
+                                max={5000}
+                                step={100}
+                            />
+                            <div className="text-sm mt-2 text-gray-600 dark:text-gray-400">
+                                ${filters.priceRange[0]} - ${filters.priceRange[1]}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Reset Button */}
+                <div className="mt-4 flex justify-end">
+                    <Button
+                        variant="ghost"
+                        className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600"
+                        onClick={resetFilters}
+                    >
+                        Reset Filters
+                    </Button>
+                </div>
             </div>
         </div>
     );
