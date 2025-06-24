@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "John Doe",
+        "category": "Singer",
+        "priceRange": "$500–$1000",
+        "location": "New York, NY",
+        "image": "/images/placeholder.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Jane Smith",
+        "category": "DJ",
+        "priceRange": "$1000–$2000",
+        "location": "Los Angeles, CA",
+        "image": "/images/placeholder.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Alice Brown",
+        "category": "Dancer",
+        "priceRange": "$800–$1200",
+        "location": "Chicago, IL",
+        "image": "/images/placeholder.jpg"
+    }
+]

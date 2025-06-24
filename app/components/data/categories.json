@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "Singer",
+        "description": "Vocal performers for all genres.",
+        "image": "/images/placeholder.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Dancer",
+        "description": "Professional dancers for events.",
+        "image": "/images/placeholder.jpg"
+    },
+    {
+        "id": 3,
+        "name": "DJ",
+        "description": "Live DJs to energize your event.",
+        "image": "/images/placeholder.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Speaker",
+        "description": "Inspirational speakers for conferences.",
+        "image": "/images/placeholder.jpg"
+    }
+]
