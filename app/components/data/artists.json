@@ -3,7 +3,7 @@
         "id": 1,
         "name": "John Doe",
         "category": "Singer",
-        "priceRange": "$500-$1000",
+        "priceRange": "₹10000-₹20000",
         "location": "New York, NY",
         "image": "/John.png"
     },
@@ -11,7 +11,7 @@
         "id": 2,
         "name": "Jane Smith",
         "category": "DJ",
-        "priceRange": "$1000-$2000",
+        "priceRange": "₹15000-₹25000",
         "location": "Los Angeles, CA",
         "image": "/Jane.png"
     },
@@ -19,7 +19,7 @@
         "id": 3,
         "name": "Alice Brown",
         "category": "Dancer",
-        "priceRange": "$800-$1200",
+        "priceRange": "45000-₹60000",
         "location": "Chicago, IL",
         "image": "/Alice.png"
     }
