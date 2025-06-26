@@ -19,7 +19,7 @@
         "id": 3,
         "name": "Alice Brown",
         "category": "Dancer",
-        "priceRange": "45000-₹60000",
+        "priceRange": "₹45000-₹60000",
         "location": "Chicago, IL",
         "image": "/Alice.png"
     }

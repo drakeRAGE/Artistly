@@ -23,37 +23,48 @@ export default function ClientArtistListing() {
   const [filters, setFilters] = useState({
     category: '',
     location: '',
-    priceRange: [0, 5000],
+    priceRange: [0, 500000],
   });
 
   useEffect(() => {
     async function loadArtists() {
       const data = await fetchArtists();
       setArtists(data || []);
+      console.log("Fetched:", data);
     }
     loadArtists();
   }, []);
 
   const filteredArtists = (artists ?? []).filter((artist) => {
     const [minPrice, maxPrice] = filters.priceRange;
-    const artistPrice = parseInt(artist.priceRange?.split('–')[0]?.replace('$', '') || 0);
+
+    const artistPrice = parseInt(
+      artist.priceRange?.split('-')[0]?.replace(/[^\d]/g, '') || '0',
+      10
+    );
+
     const matchesSearch =
       artist.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       artist.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
       artist.location.toLowerCase().includes(searchQuery.toLowerCase());
 
-    return (
-      matchesSearch &&
-      (!filters.category || artist.category === filters.category) &&
-      (!filters.location || artist.location.includes(filters.location)) &&
-      artistPrice >= minPrice &&
-      artistPrice <= maxPrice
-    );
+    const matchesCategory =
+      !filters.category ||
+      artist.category.toLowerCase() === filters.category.toLowerCase();
+
+    const matchesLocation =
+      !filters.location ||
+      artist.location.toLowerCase().includes(filters.location.toLowerCase());
+
+    const matchesPrice = artistPrice >= minPrice && artistPrice <= maxPrice;
+
+    return matchesSearch && matchesCategory && matchesLocation && matchesPrice;
   });
 
   const sortedArtists = [...filteredArtists].sort((a, b) => {
-    const priceA = parseInt(a.priceRange?.split('–')[0]?.replace('$', '') || 0);
-    const priceB = parseInt(b.priceRange?.split('–')[0]?.replace('$', '') || 0);
+    const priceA = parseInt(a.priceRange?.split('-')[0]?.replace(/[^\d]/g, '') || '0', 10);
+    const priceB = parseInt(b.priceRange?.split('-')[0]?.replace(/[^\d]/g, '') || '0', 10);
+
     switch (sortBy) {
       case 'price-low':
         return priceA - priceB;
@@ -91,15 +102,25 @@ export default function ClientArtistListing() {
 
   const stats = [
     { icon: Users, value: filteredArtists.length, label: 'Artists Available' },
-    { icon: MapPin, value: [...new Set(filteredArtists.map(a => a.location))].length, label: 'Locations' },
+    {
+      icon: MapPin,
+      value: [...new Set(filteredArtists.map((a) => a.location))].length,
+      label: 'Locations',
+    },
     {
       icon: DollarSign,
-      value: `$${Math.min(...filteredArtists.map(a =>
-        parseInt(a.priceRange?.split('–')[0]?.replace('$', '') || 0)
-      ))}+`,
+      value:
+        filteredArtists.length > 0
+          ? `₹${Math.min(
+              ...filteredArtists.map((a) =>
+                parseInt(a.priceRange?.split('-')[0]?.replace(/[^\d]/g, '') || '0', 10)
+              )
+            )}+`
+          : '₹0',
       label: 'Starting From',
     },
   ];
+
 
 
   return (
@@ -266,7 +287,7 @@ export default function ClientArtistListing() {
                 <button
                   onClick={() => {
                     setSearchQuery('');
-                    setFilters({ category: '', location: '', priceRange: [0, 5000] });
+                    setFilters({ category: '', location: '', priceRange: [0, 500000] });
                   }}
                   className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl font-medium hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-200"
                 >
