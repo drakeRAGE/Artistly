@@ -6,7 +6,7 @@ import { Button } from './ui/button';
 import { MapPin, Star, Sparkles, ArrowRight } from 'lucide-react';
 
 /**
- * Enhanced Artist Card component
+ * Enhanced Artist Card component with Dark Mode
  * @param {Object} props - Component props
  * @param {Object} props.artist - Artist data
  * @returns {JSX.Element} Artist card
@@ -23,14 +23,14 @@ export default function ArtistCard({ artist }) {
                 stiffness: 300,
                 damping: 20
             }}
-            className="group relative overflow-hidden rounded-2xl bg-white/80 backdrop-blur-xl border border-white/20 shadow-2xl hover:shadow-purple-500/25 transition-all duration-500"
+            className="group relative overflow-hidden rounded-2xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-white/20 dark:border-gray-700/20 shadow-2xl hover:shadow-purple-500/25 dark:hover:shadow-purple-400/25 transition-all duration-500"
         >
             {/* Animated gradient background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 via-purple-600/5 to-pink-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 via-purple-600/5 to-pink-600/5 dark:from-blue-400/10 dark:via-purple-400/10 dark:to-pink-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
             {/* Floating sparkle effect */}
             <motion.div
-                className="absolute top-4 right-4 text-yellow-400 opacity-0 group-hover:opacity-100"
+                className="absolute top-4 right-4 text-yellow-400 dark:text-yellow-300 opacity-0 group-hover:opacity-100"
                 animate={{
                     rotate: [0, 360],
                     scale: [1, 1.2, 1]
@@ -63,20 +63,20 @@ export default function ArtistCard({ artist }) {
                     transition={{ delay: 0.2 }}
                     className="absolute top-4 left-4"
                 >
-                    <div className="px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-sm border border-white/20 shadow-lg">
-                        <span className="text-xs font-medium bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    <div className="px-3 py-1.5 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border border-white/20 dark:border-gray-600/20 shadow-lg">
+                        <span className="text-xs font-medium bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
                             {artist.category}
                         </span>
                     </div>
                 </motion.div>
 
                 {/* Rating stars */}
-                <div className="absolute top-4 right-16 flex items-center gap-1 px-2 py-1 rounded-full bg-black/20 backdrop-blur-sm">
+                <div className="absolute top-4 right-16 flex items-center gap-1 px-2 py-1 rounded-full bg-black/20 dark:bg-black/40 backdrop-blur-sm">
                     {[...Array(5)].map((_, i) => (
                         <Star
                             key={i}
                             size={12}
-                            className={`${i <= [3, 4, 5][Math.floor(Math.random() * 3)] ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'}`}
+                            className={`${i <= [3, 4, 5][Math.floor(Math.random() * 3)] ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300 dark:text-gray-500'}`}
                         />
                     ))}
                 </div>
@@ -86,7 +86,7 @@ export default function ArtistCard({ artist }) {
             <div className="relative p-6 space-y-4">
                 {/* Artist name with gradient text */}
                 <motion.h3
-                    className="text-xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 bg-clip-text text-transparent leading-tight"
+                    className="text-xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 dark:from-white dark:via-blue-200 dark:to-purple-200 bg-clip-text text-transparent leading-tight"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.3 }}
@@ -103,20 +103,20 @@ export default function ArtistCard({ artist }) {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.4 }}
                     >
-                        <span className="text-sm text-gray-500 font-medium">Starting from</span>
-                        <span className="text-lg font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+                        <span className="text-sm text-gray-500 dark:text-gray-400 font-medium">Starting from</span>
+                        <span className="text-lg font-bold bg-gradient-to-r from-green-600 to-emerald-600 dark:from-green-400 dark:to-emerald-400 bg-clip-text text-transparent">
                             {artist.priceRange}
                         </span>
                     </motion.div>
 
                     {/* Location with icon */}
                     <motion.div
-                        className="flex items-center gap-2 text-gray-600"
+                        className="flex items-center gap-2 text-gray-600 dark:text-gray-300"
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.5 }}
                     >
-                        <MapPin size={16} className="text-blue-500" />
+                        <MapPin size={16} className="text-blue-500 dark:text-blue-400" />
                         <span className="text-sm font-medium">{artist.location}</span>
                     </motion.div>
                 </div>
@@ -130,7 +130,7 @@ export default function ArtistCard({ artist }) {
                 >
                     <Button
                         onClick={() => console.log('Quote requested:', artist.id)}
-                        className="group/btn w-full relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-0"
+                        className="group/btn w-full relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 hover:from-blue-700 hover:to-purple-700 dark:hover:from-blue-600 dark:hover:to-purple-600 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl dark:shadow-blue-500/25 dark:hover:shadow-purple-500/25 transition-all duration-300 border-0"
                     >
                         <motion.div
                             className="flex items-center justify-center gap-2"
@@ -151,12 +151,12 @@ export default function ArtistCard({ artist }) {
                         </motion.div>
 
                         {/* Button shine effect */}
-                        <div className="absolute inset-0 -top-2 -bottom-2 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700" />
+                        <div className="absolute inset-0 -top-2 -bottom-2 bg-gradient-to-r from-transparent via-white/20 dark:via-white/10 to-transparent -skew-x-12 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700" />
                     </Button>
                 </motion.div>
 
                 {/* Decorative bottom accent */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600/50 via-purple-600/50 to-pink-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600/50 via-purple-600/50 to-pink-600/50 dark:from-blue-400/50 dark:via-purple-400/50 dark:to-pink-400/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
         </motion.div>
     );
