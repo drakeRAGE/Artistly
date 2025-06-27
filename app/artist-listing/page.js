@@ -300,7 +300,7 @@ export default function ClientArtistListing() {
                     className="bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-emerald-500/10 dark:from-emerald-400/20 dark:via-teal-400/20 dark:to-emerald-400/20 px-6 py-3 rounded-full border border-emerald-200/50 dark:border-emerald-700/50 backdrop-blur-sm"
                   >
                     <span className="text-emerald-700 dark:text-emerald-300 font-semibold">
-                      for "<span className="font-bold">{searchQuery}</span>"
+                      for &quot;<span className="font-bold">{searchQuery}</span>&quot;
                     </span>
                   </motion.div>
                 )}
@@ -504,7 +504,7 @@ export default function ClientArtistListing() {
                   No artists found
                 </h3>
                 <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-md leading-relaxed">
-                  We couldn't find any artists matching your criteria. Try adjusting your search or filters to discover more talent.
+                  We could not find any artists matching your criteria. Try adjusting your search or filters to discover more talent.
                 </p>
                 <button
                   onClick={() => {
