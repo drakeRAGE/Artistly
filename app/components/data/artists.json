@@ -1,26 +1,82 @@
 [
     {
         "id": 1,
-        "name": "John Doe",
+        "name": "Amit Sharma",
         "category": "Singer",
         "priceRange": "₹10000-₹20000",
-        "location": "New York, NY",
+        "location": "Mumbai, Maharashtra",
         "image": "/John.png"
     },
     {
         "id": 2,
-        "name": "Jane Smith",
+        "name": "Priya Singh",
         "category": "DJ",
         "priceRange": "₹15000-₹25000",
-        "location": "Los Angeles, CA",
+        "location": "Delhi, Delhi",
         "image": "/Jane.png"
     },
     {
         "id": 3,
-        "name": "Alice Brown",
+        "name": "Rohit Verma",
         "category": "Dancer",
         "priceRange": "₹45000-₹60000",
-        "location": "Chicago, IL",
+        "location": "Bangalore, Karnataka",
         "image": "/Alice.png"
+    },
+    {
+        "id": 4,
+        "name": "Sneha Patel",
+        "category": "Magician",
+        "priceRange": "₹20000-₹35000",
+        "location": "Ahmedabad, Gujarat",
+        "image": "/John.png"
+    },
+    {
+        "id": 5,
+        "name": "Vikram Mehra",
+        "category": "Comedian",
+        "priceRange": "₹12000-₹18000",
+        "location": "Kolkata, West Bengal",
+        "image": "/Jane.png"
+    },
+    {
+        "id": 6,
+        "name": "Anjali Nair",
+        "category": "Painter",
+        "priceRange": "₹25000-₹40000",
+        "location": "Chennai, Tamil Nadu",
+        "image": "/Alice.png"
+    },
+    {
+        "id": 7,
+        "name": "Rahul Deshmukh",
+        "category": "Singer",
+        "priceRange": "₹18000-₹30000",
+        "location": "Pune, Maharashtra",
+        "image": "/John.png"
+    },
+    {
+        "id": 8,
+        "name": "Neha Gupta",
+        "category": "DJ",
+        "priceRange": "₹22000-₹32000",
+        "location": "Hyderabad, Telangana",
+        "image": "/Jane.png"
+    },
+    {
+        "id": 9,
+        "name": "Karan Kapoor",
+        "category": "Dancer",
+        "priceRange": "₹35000-₹50000",
+        "location": "Jaipur, Rajasthan",
+        "image": "/Alice.png"
+    },
+    {
+        "id": 10,
+        "name": "Meera Joshi",
+        "category": "Magician",
+        "priceRange": "₹17000-₹27000",
+        "location": "Lucknow, Uttar Pradesh",
+        "image": "/John.png"
     }
 ]
