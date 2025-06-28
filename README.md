@@ -1,4 +1,4 @@
-# Artistly.com Demo Project
+# Artistly
 
 A fictional *Performing Artist Booking Platform* built as part of a React + Next.js Frontend Developer Test Assignment. The platform connects **Event Planners** and **Artist Managers**, allowing event planners to browse artist profiles, filter by categories, and raise booking requests, while artist managers can onboard artists and manage submissions via a dashboard.
 
